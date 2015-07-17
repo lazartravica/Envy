@@ -1,0 +1,13 @@
+---
+- hosts: utility
+  tasks:
+    - name: Make sure the known hosts file exists.
+      file: "path=/home/vagrant/.ssh/known_hosts state=touch"
+
+    - name: Scan the public keys.
+      shell: "ssh-keyscan {{ item }} >> /home/vagrant/.ssh/known_hosts"
+      with_items: groups['common']
+
+- hosts: common
+  roles:
+    - common

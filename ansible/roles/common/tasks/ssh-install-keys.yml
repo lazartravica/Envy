@@ -1,0 +1,2 @@
+- name: Install mgmt's SSH key.
+  authorized_key: user=vagrant key="{{ lookup('file', '/home/vagrant/.ssh/id_rsa.pub') }}" state=present
