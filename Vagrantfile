@@ -46,6 +46,12 @@ Vagrant.configure("2") do |config|
       nodeConfiguration.vm.provider "virtualbox" do |vb|
         vb.memory = nodes['mem']
       end
+
+      # Fixes "stdin: is not a tty" error.
+      # https://github.com/mitchellh/vagrant/issues/1673#issuecomment-28817675
+      # https://www.virtualbox.org/manual/ch09.html
+      nodeConfiguration.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+
       nodeConfiguration.vm.provision :shell, path: "bootstrap-common.sh"
     end
   end
@@ -58,7 +64,12 @@ Vagrant.configure("2") do |config|
     mgmt_config.vm.provider "virtualbox" do |vb|
         vb.memory = "256"
     end
+
+    # Fixes "stdin: is not a tty" error.
+    # https://github.com/mitchellh/vagrant/issues/1673#issuecomment-28817675
+    # https://www.virtualbox.org/manual/ch09.html
+    mgmt_config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+
     mgmt_config.vm.provision :shell, path: "bootstrap-mgmt.sh"
-    mgmt_config.vm.provision :shell, inline: "export HOME='/home/vagrant/'; sudo -u vagrant ansible-playbook /home/vagrant/ansible/installation.yml"
   end
 end

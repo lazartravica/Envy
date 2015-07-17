@@ -36,3 +36,15 @@ cp /vagrant/common_files/hosts.system /etc/hosts
 
 # Set up the Ansible hosts file
 cp /vagrant/mgmt_files/hosts.ansible /etc/ansible/hosts
+
+# Overrides the HOME env variable to vagrant
+export HOME='/home/vagrant/'
+
+# Runs the default Envy Ansible playbook for installing SSH keys on common nodes
+sudo -u vagrant ansible-playbook /home/vagrant/ansible/installation.yml
+
+# Runs the custom Ansible playbook if present
+if [ -f /home/vagrant/ansible/custom-installation.yml ]; then
+  echo 'Running custom installation playbook.'
+  sudo -u vagrant ansible-playbook /home/vagrant/ansible/custom-installation.yml
+fi
