@@ -25,6 +25,9 @@ cp -ra /vagrant/ansible /home/vagrant/
 # Install the predefined SSH-key pair
 cp /vagrant/mgmt_files/id_rsa* /home/vagrant/.ssh
 
+# Limits the permissions on the private key
+chmod 0600 /home/vagrant/.ssh/id_rsa
+
 # Fixes the ownership of all files, including the newly copied ones
 chown -R vagrant:vagrant /home/vagrant/
 
