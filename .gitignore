@@ -1,3 +1,4 @@
+nodes.yml
 .vagrant/
 common_files/hosts.system
 mgmt_files/hosts.ansible
