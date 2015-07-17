@@ -14,11 +14,11 @@ Each node is defined in the `nodes.yml` file in the following way:
 
 Currently there are no default settings available, therefore you need to specify all option in order for the Vagrantfile to run successfully.
 
-## TODO: Adding your own Ansible provisioning scripts
+## Adding your own Ansible provisioning scripts
 
-Precise instructions will be available soon. The goal is to have your custom Ansible scripts run on `vagrant up`.
+Create a playbook `ansible/custom-installation.yml` which will be at provisioning if present.
 
-The correct approach is left to be determined, whether it be git submodules or advanced git exclusion strategies to allow for cloning your scripts in place.
+The correct approach for integrating Ansible repos is left to be determined, whether it be git submodules or advanced git exclusion strategies to allow for cloning your scripts in place.
 
 ## Running
 
