@@ -1,6 +1,8 @@
 # Envy
 
-Envy is an easy to use multi-machine vagrant env setup with ansible provisioning.
+Envy is an easy to use multi-machine Vagrant environment with support for custom Ansible provisioning.
+
+All environment configuration should be done in the `nodes.yml` YAML configuration file.
 
 ## Node configuration file
 Each node is defined in the `nodes.yml` file in the following way:
@@ -14,17 +16,15 @@ Each node is defined in the `nodes.yml` file in the following way:
     - ...
 ```
 
-For more information, you can look at the example nodes.yml provided, be sure to change it.
+For more information, you can look at the example `nodes.yml` provided.
 
-Groups options is the only optional option in defining a node.
+`groups` option is the only optional option in defining a node.
 
 Currently there are no default settings available, therefore you need to specify all option in order for the Vagrantfile to run successfully.
 
-More options, and default fallbacks are coming soon.
+## Adding your own Ansible scripts
 
-## Adding your own Ansible provisioning scripts
-
-Clone your repo containing the Ansible provisioning scripts into the `ansible` folder.
+Clone your repo containing the Ansible scripts into the `ansible` folder.
 
 The `ansible/playbook.yml` will be executed when provisioning.
 
@@ -34,4 +34,4 @@ git clone [your-git-repo] ansible
 
 ## Running
 
-Just `vagrant up` and hope for the best.
+Just `vagrant up`.
