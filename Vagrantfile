@@ -72,7 +72,7 @@ Vagrant.configure("2") do |config|
   nodes.each do |nodes|
     config.vm.define nodes['node'] do |nodeConfiguration|
       nodeConfiguration.vm.box = "ubuntu/trusty64"
-      nodeConfiguration.vm.hostname = nodes['host']
+      nodeConfiguration.vm.hostname = nodes['node']
       nodeConfiguration.vm.network :private_network, ip: nodes['ip']
       nodeConfiguration.vm.provider "virtualbox" do |vb|
         vb.memory = nodes['mem']
