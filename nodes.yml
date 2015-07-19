@@ -1,5 +1,18 @@
 ---
-- node:
-  host: server1
+- node: server1
   ip: 192.168.10.11
   mem: 256
+  groups:
+    - servers
+    - db
+- node: server2
+  ip: 192.168.10.12
+  mem: 256
+  groups:
+    - servers
+    - web
+- node: loadBalancer1
+  ip: 192.168.10.20
+  mem: 256
+  groups:
+    - lb

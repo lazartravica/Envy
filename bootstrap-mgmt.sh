@@ -19,9 +19,6 @@ fi
 # Delete the old ansible scripts if present
 rm -rf /home/vagrant/ansible
 
-# Put the Ansible scripts and static files to their desired location
-cp -ra /vagrant/ansible /home/vagrant/
-
 # Install the predefined SSH-key pair
 cp /vagrant/mgmt_files/id_rsa* /home/vagrant/.ssh
 
@@ -37,14 +34,14 @@ cp /vagrant/common_files/hosts.system /etc/hosts
 # Set up the Ansible hosts file
 cp /vagrant/mgmt_files/hosts.ansible /etc/ansible/hosts
 
-# Overrides the HOME env variable to vagrant
+# Overrides the HOME env variable to vagrant user's home
 export HOME='/home/vagrant/'
 
-# Runs the default Envy Ansible playbook for installing SSH keys on common nodes
-sudo -u vagrant ansible-playbook /home/vagrant/ansible/installation.yml
+# Disables known_hosts file checking. That level of security is not needed in virtual environments.
+echo 'ANSIBLE_HOST_KEY_CHECKING=False' > /etc/profile.d/ansible-host-key-checking.sh
 
-# Runs the custom Ansible playbook if present
-if [ -f /home/vagrant/ansible/custom-installation.yml ]; then
-  echo 'Running custom installation playbook.'
-  sudo -u vagrant ansible-playbook /home/vagrant/ansible/custom-installation.yml
+# Runs the Ansible playbook if present
+if [ -f /home/vagrant/ansible/playbook.yml ]; then
+  echo 'Running Ansible playbook.'
+  sudo -u vagrant ansible-playbook /home/vagrant/ansible/playbook.yml
 fi

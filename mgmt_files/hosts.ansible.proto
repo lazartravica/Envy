@@ -1,6 +1,0 @@
-# The Ansible hosts inventory file.
-
-[utility]
-mgmt ansible_connection=local
-
-[common]
