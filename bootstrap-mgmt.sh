@@ -41,7 +41,9 @@ export HOME='/home/vagrant/'
 echo 'ANSIBLE_HOST_KEY_CHECKING=False' > /etc/profile.d/ansible-host-key-checking.sh
 
 # Runs the Ansible playbook if present
-if [ -f /home/vagrant/ansible/playbook.yml ]; then
+if [ -f /vagrant/ansible/playbook.yml ]; then
+  cp -r /vagrant/ansible /home/vagrant/ansible
+  chown -R vagrant:vagrant /home/vagrant/ansible
   echo 'Running Ansible playbook.'
   sudo -u vagrant ansible-playbook /home/vagrant/ansible/playbook.yml
 fi
