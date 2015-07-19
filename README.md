@@ -18,9 +18,7 @@ Each node is defined in the `nodes.yml` file in the following way:
 
 For more information, you can look at the example `nodes.yml` provided.
 
-`groups` option is the only optional option in defining a node.
-
-Currently there are no default settings, therefore all options besides `groups` are required.
+`groups` attribute is the only optional attribute in defining a node.
 
 ## Adding your own Ansible scripts
 
