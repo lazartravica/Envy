@@ -6,8 +6,7 @@ Envy is an easy to use multi-machine vagrant env setup with ansible provisioning
 Each node is defined in the `nodes.yml` file in the following way:
 
 ```
-- node:
-  host: [hostname]
+- node: [hostname]
   ip: [private-ipv4-address]
   mem: [available-ram-memory]
   groups:
