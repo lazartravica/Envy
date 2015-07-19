@@ -10,16 +10,29 @@ Each node is defined in the `nodes.yml` file in the following way:
   host: [hostname]
   ip: [private-ipv4-address]
   mem: [available-ram-memory]
+  groups:
+    - [group-name]
+    - ...
 ```
+
+For more information, you can look at the example nodes.yml provided, be sure to change it.
+
+Groups options is the only optional option in defining a node.
 
 Currently there are no default settings available, therefore you need to specify all option in order for the Vagrantfile to run successfully.
 
+More options, and default fallbacks are coming soon.
+
 ## Adding your own Ansible provisioning scripts
 
-Create a playbook `ansible/custom-installation.yml` which will be at provisioning if present.
+Clone your repo containing the Ansible provisioning scripts into the `ansible` folder.
 
-The correct approach for integrating Ansible repos is left to be determined, whether it be git submodules or advanced git exclusion strategies to allow for cloning your scripts in place.
+The `ansible/playbook.yml` will be executed when provisioning.
+
+```
+git clone [your-git-repo] ansible
+```
 
 ## Running
 
-Just `vagrant up` .
+Just `vagrant up` and hope for the best.
